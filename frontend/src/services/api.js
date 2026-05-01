@@ -1,6 +1,15 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://team-task-manager4.onrender.com';
+const normalizeApiBaseUrl = (url) => {
+  if (!url) {
+    return '/api';
+  }
+
+  const trimmedUrl = url.trim().replace(/\/+$/, '');
+  return trimmedUrl.endsWith('/api') ? trimmedUrl : `${trimmedUrl}/api`;
+};
+
+const API_URL = normalizeApiBaseUrl(import.meta.env.VITE_API_URL);
 
 const api = axios.create({
   baseURL: API_URL,

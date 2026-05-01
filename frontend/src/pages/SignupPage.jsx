@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { COUNTRIES } from "../utils/countries";
 import "../styles/Auth.css";
@@ -124,7 +124,7 @@ const SignupPage = () => {
         </form>
 
         <p className="auth-link">
-          Already have an account? <a href="/login">Login here</a>
+          Already have an account? <Link to="/login">Login here</Link>
         </p>
       </div>
     </div>
