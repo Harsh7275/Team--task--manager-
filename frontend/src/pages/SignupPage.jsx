@@ -1,19 +1,19 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
-import { COUNTRIES } from '../utils/countries';
-import '../styles/Auth.css';
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { COUNTRIES } from "../utils/countries";
+import "../styles/Auth.css";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    country: 'United States',
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    country: "India",
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { signup } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -24,14 +24,20 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
-      await signup(formData.name, formData.email, formData.password, formData.confirmPassword, formData.country);
-      navigate('/');
+      await signup(
+        formData.name,
+        formData.email,
+        formData.password,
+        formData.confirmPassword,
+        formData.country,
+      );
+      navigate("/");
     } catch (err) {
-      setError(err.response?.data?.message || 'Signup failed');
+      setError(err.response?.data?.message || "Signup failed");
     } finally {
       setLoading(false);
     }
@@ -113,7 +119,7 @@ const SignupPage = () => {
           </div>
 
           <button type="submit" disabled={loading} className="btn btn-primary">
-            {loading ? 'Creating Account...' : 'Sign Up'}
+            {loading ? "Creating Account..." : "Sign Up"}
           </button>
         </form>
 
